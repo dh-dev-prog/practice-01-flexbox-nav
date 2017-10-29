@@ -1,0 +1,95 @@
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.navbar-brand {
+  width: 48px;
+  padding: 0.8em;
+  margin-bottom: 0.8em;
+  background-color: var(--dark-scarlet);
+  text-align: center;
+  color: #fff;
+}
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+}
+.nav-item {
+  position: relative; /* important. create a new stacking context. under 430px can't click nav-item[1] and nav-item[2] if not present*/
+  width: 100%;
+}
+.nav-link {
+  padding: 0.8em;
+}
+.nav-item-dropdown {
+  opacity: 0;
+  height: 0;
+  width: 100%;
+  transition: opacity 0s linear;
+}
+.nav-item-dropdown li {
+  height: 0;
+  padding: 0.8em;
+  transition: height .3s linear;
+}
+.show-dropdown {
+  height: auto;
+  opacity: 1;
+  transition: opacity 0s linear;
+}
+.show-dropdown li {
+  height: 20px;
+  transition: height .3s linear;
+}
+
+.home,
+.home li {
+  background-color: var(--smokey-topaz);
+}
+.about,
+.about li {
+  background-color: var(--copper);
+}
+.contact,
+.contact li {
+  background-color: var(--shadow);
+}
+.nav-navbar li:last-of-type {
+  border-radius: 0 0 5px 5px;
+}
+
+@media only screen and (min-width: 430px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-nav {
+    flex-wrap: nowrap;
+  }
+  .navbar-nav > li:first-of-type { /* need direct li child or the first li in the dropdown will have border-radius as well */
+    border-radius: 5px 0 0 5px;
+  }
+  .navbar-nav > li:last-of-type {
+    border-radius: 0 5px 5px 0;
+  }
+  .navbar-brand {
+    flex: 0 0 48px;
+    margin-right: auto;
+    margin-bottom: inherit;
+    background-color: var(--dark-scarlet);
+    color: #fff;
+  }
+  .nav-item {
+    flex: 0 0 100px;
+    min-width: 100px;
+  }
+  .nav-item-dropdown {
+    position: absolute;
+    top: 38px; /* to hide the white space left by the border-radius on nav-item */
+  }
+  .nav-item-dropdown li:last-of-type {
+    border-radius: 0 0 5px 5px;
+  }
+}
